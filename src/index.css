@@ -1,0 +1,150 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Theme variables */
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-shadow-glass: var(--shadow-glass);
+  --color-subhead: var(--subhead);
+}
+
+/* Default (light) theme */
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --shadow-glass: 0 8px 32px rgba(31, 38, 135, 0.37);
+  --subhead: #9FA3AD;
+
+  /* Primary & secondary gradient variables */
+  --primary-g: 260 85% 65%;
+  --primary-glow-g: 280 90% 70%;
+  --secondary-g: 195 85% 55%;
+  --secondary-glow-g: 180 90% 60%;
+}
+
+/* Dark theme overrides */
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --shadow-glass: 0 8px 32px rgba(31, 38, 135, 0.37);
+  --shadow-glass-second: 0 4px 28px rgba(31, 38, 135, 0.37);
+  --glass-background: 220 15% 12%;
+  --glass-border: 220 20% 20%;
+  --glass-shadow: 220 15% 5%;
+  --subhead: #9FA3AD;
+}
+
+/* Base layer */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Gradients */
+.gradient-primary {
+  background: linear-gradient(135deg, hsl(var(--primary-g)), hsl(var(--primary-glow-g)));
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, hsl(var(--secondary-g)), hsl(var(--secondary-glow-g)));
+}
+
+.gradient-tertiary {
+  background: linear-gradient(
+    to right,
+    oklch(0.6 0.25 260),
+    oklch(0.67 0.28 275),
+    oklch(0.62 0.25 290)
+  );
+}
+
+/* Gradient text helpers */
+.text-gradient {
+  background: linear-gradient(
+    to right,
+    oklch(0.6 0.25 260),
+    oklch(0.67 0.28 275),
+    oklch(0.62 0.25 290)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-secondary {
+  background: linear-gradient(135deg, hsl(var(--primary-g)), hsl(var(--primary-glow-g)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-tertiary {
+  background: linear-gradient(135deg, hsl(var(--secondary-g)), hsl(var(--secondary-glow-g)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glass effect */
+.glass-strong {
+  border: 1px solid hsl(var(--glass-border) / 0.4);
+  box-shadow: var(--shadow-glass);
+}
