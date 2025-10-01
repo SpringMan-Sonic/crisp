@@ -230,7 +230,7 @@ ${JSON.stringify(answers)}
                   {evaluatingStatus===STATUS.LOADING  && (
                     <>
                       <FaSpinner className="animate-spin h-4 w-4" />
-                      Brewing your results... ☕
+                      Fetching results
                       {/* <CgSandClock className="animate-spin h-4 w-4" /> */}
                     </>
                   ) }
