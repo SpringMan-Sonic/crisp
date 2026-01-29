@@ -74,9 +74,7 @@ export default function Interviewee() {
             const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
            const genAi=new GoogleGenerativeAI(apiKey)
 
-           const model = genAi.getGenerativeModel({
-  model: "gemini-1.5-flash"
-});
+           const model = genAi.getGenerativeModel({ model: "models/gemini-1.5-flash" });
 
           //  Extracted base 64 part form data uri so that we can send it to gemini api
            const parts = fileDataUrl.split(';base64,');
